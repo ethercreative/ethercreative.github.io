@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ether Gallery</title>
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic" rel="stylesheet">
+	<style>
+		/* CSS from http://www.gridlover.net/app/ */
+		body {
+			font-size: 19px;
+			line-height: 27px;
+			max-width: 760px;
+			margin: 0 auto;
+			padding: 0 20px 20px;
+			font-family: "PT Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+			color: #33373a;
+		}
+		h1 {
+			font-size: 64px;
+			line-height: 81px;
+			margin-top: 54px;
+			margin-bottom: 27px;
+		}
+		h2 {
+			font-size: 43px;
+			line-height: 54px;
+			margin-top: 54px;
+			margin-bottom: 27px;
+		}
+		h3 {
+			font-size: 29px;
+			line-height: 54px;
+			margin-top: 27px;
+			margin-bottom: 27px;
+		}
+		h4 {
+			font-size: 19px;
+			line-height: 27px;
+			margin-top: 27px;
+			margin-bottom: 27px;
+		}
+		p, ul, ol, pre, table, blockquote {
+			margin-top: 27px;
+			margin-bottom: 27px;
+		}
+
+		/* Sanitation */
+		hr {
+			border: 1px solid;
+			margin: -1px 0;
+		}
+		ul ul, ol ol, ul ol, ol ul {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		b, strong, em, small, code {
+			line-height: 1;
+		}
+		sup, sub {
+			vertical-align: baseline;
+			position: relative;
+			top: -0.4em;
+		}
+		sub {
+			top: 0.4em;
+		}
+
+		/* Misc */
+		img {
+			width: 100%;
+			height: auto;
+		}
+
+		/* Gallery */
+		.egal-overlay,
+		.egal-ul {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			overflow: hidden;
+			opacity: 0;
+			pointer-events: none;
+			-webkit-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;
+		}
+		.egal-overlay {
+			background: rgba(0, 0, 0, 0.8);
+			z-index: 998;
+		}
+		.egal-ul {
+			z-index: 999;
+		}
+		.egal-ul li {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -5%;
+			z-index: 1;
+			width: 5%;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-webkit-align-items: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-webkit-justify-content: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			opacity: 0;
+			-webkit-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;
+		}
+		.egal-ul li div {
+			text-align: center;
+			max-width: 100%;
+		}
+		.egal-ul li img {
+			width: auto;
+			height: auto;
+			max-width: 90%;
+			max-height: 90%;
+		}
+		.egal-ul li.egal-after-next {
+			left: 100%;
+			z-index: -1;
+		}
+		.egal-ul li.egal-next,
+		.egal-ul li.egal-prev,
+		.egal-ul li.egal-active {
+			opacity: 1;
+		}
+		.egal-ul li.egal-prev,
+		.egal-ul li.egal-next {
+			cursor: pointer;
+		}
+		.egal-ul li.egal-prev:hover,
+		.egal-ul li.egal-next:hover {
+			width: 7%;
+		}
+		.egal-ul li.egal-prev {
+			left: 0;
+		}
+		.egal-ul li.egal-next {
+			left: 95%;
+		}
+		.egal-ul li.egal-next:hover {
+			left: 93%;
+		}
+		.egal-ul li.egal-active {
+			width: 100%;
+			left: 0;
+			right: 0;
+			z-index: 3;
+			pointer-events: none;
+		}
+		.egal-open {
+			overflow: hidden;
+		}
+		.egal-open .egal-overlay,
+		.egal-open .egal-ul {
+			opacity: 1;
+		}
+		.egal-open .egal-overlay,
+		.egal-open .egal-ul * {
+			pointer-events: all;
+		}
+	</style>
+</head>
+<body>
+	<h1>Ether Gallery</h1>
+
+	<h4>Gallery 1</h4>
+	<a href="http://lorempixel.com/output/city-q-c-640-480-6.jpg" data-gallery="1">
+		<img src="http://lorempixel.com/output/city-q-c-640-480-6.jpg" alt=""/>
+	</a>
+	<a href="http://lorempixel.com/640/480" title="An image" data-gallery="1"></a>
+	<a href="http://lorempixel.com/400/400" title="Another Image" data-gallery="1"></a>
+	<a href="http://lorempixel.com/1000/800" data-gallery="1"></a>
+	<a href="http://lorempixel.com/400/1000" data-gallery="1"></a>
+
+	<h4>Gallery 2</h4>
+	<a href="http://lorempixel.com/600/400" data-gallery="gallery_2">Launch Gallery</a>
+	<a href="http://lorempixel.com/640/480" title="An image" data-gallery="gallery_2"></a>
+	<a href="http://lorempixel.com/400/400" title="Another Image" data-gallery="gallery_2"></a>
+	<a href="http://lorempixel.com/1000/800" data-gallery="gallery_2"></a>
+	<a href="http://lorempixel.com/400/1000" data-gallery="gallery_2"></a>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		!function($,e,t,a){"use strict";function l(e,t){this.element=e,this.settings=$.extend({},i,t),this._defaults=i,this._name=n,this.init()}var n="etherGallery",i={keys:!0,swipe:!0};$.extend(l.prototype,{init:function(){var e=this,t=$("body");e.overlay=$(".egal-overlay"),e.overlay.length<1&&(e.overlay=$('<div class="egal-overlay" />').click(function(){e.closeGallery(e)}),t.append(e.overlay)),e.ul=$(".egal-ul"),e.ul.length<1&&(e.ul=$('<ul class="egal-ul" />'),t.append(e.ul));var a=$(this.element).find("a[data-gallery]");a.click(function(t){t.preventDefault(),t.stopImmediatePropagation(),e.openGallery(e,this)}),e.keyListener=function(t){39===t.keyCode?e.ul.find(".egal-next").click():37===t.keyCode?e.ul.find(".egal-prev").click():27===t.keyCode&&e.closeGallery(e)};var l=null,n=null;e.handleTouchStart=function(e){l=e.touches[0].clientX,n=e.touches[0].clientY},e.handleTouchMove=function(t){if(l&&n){var a=t.touches[0].clientX,i=t.touches[0].clientY,s=l-a,c=n-i;Math.abs(s)>Math.abs(c)&&(s>0?e.ul.find(".egal-next").click():e.ul.find(".egal-prev").click()),l=null,n=null}}},openGallery:function(e,a){function l(t){var a=$(t).prev(),n=$(t).next();e.ul.find("li").removeClass("egal-active").removeClass("egal-next").removeClass("egal-prev").removeClass("egal-after-next"),a.addClass("egal-prev").find("img").attr("src",a.data("image")),n.addClass("egal-next").find("img").attr("src",n.data("image")),$(t).addClass("egal-active").off("click"),a.off("click").click(function(){l(this)}),n.off("click").click(function(){l(this)}),n.nextAll().addClass("egal-after-next")}var n=$(a).data("gallery"),i=$(a).attr("href"),s=$(e.element).find("a[data-gallery="+n+"]");e.ul.html(""),s.each(function(){e.ul.append('<li data-image="'+$(this).attr("href")+'"><div><img src="" alt="'+($(this).attr("title")||"")+'" /></div></li>')});var c=e.ul.find('li[data-image="'+i+'"]'),o=c.prev(),r=c.next();c.addClass("egal-active").find("img").attr("src",c.data("image")),o.addClass("egal-prev").find("img").attr("src",o.data("image")),r.addClass("egal-next").find("img").attr("src",r.data("image")),r.nextAll().addClass("egal-after-next"),e.ul.find("li").find("img").on("load",function(){$(this).parent().css("opacity",1)}),o.click(function(){l(this)}),r.click(function(){l(this)}),e.settings.keys&&t.addEventListener("keydown",e.keyListener,!0),e.settings.swipe&&(t.addEventListener("touchstart",e.handleTouchStart,!1),t.addEventListener("touchmove",e.handleTouchMove,!1)),$("body").addClass("egal-open")},closeGallery:function(e){t.removeEventListener("keydown",e.keyListener,!0),t.removeEventListener("touchstart",e.handleTouchStart,!1),t.removeEventListener("touchmove",e.handleTouchMove,!1),$("body").removeClass("egal-open")}}),$.fn[n]=function(e){return this.each(function(){$.data(this,"plugin_"+n)||$.data(this,"plugin_"+n,new l(this,e))})}}(jQuery,window,document);
+		$(document).ready(function () {
+			$('body').etherGallery();
+		});
+	</script>
+
+</body>
+</html>
